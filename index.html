@@ -1,73 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>File Table</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <title>My Uploads</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- FontAwesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
   <style>
-    table {
-      width: 80%;
-      border-collapse: collapse;
-      margin: 20px auto;
-    }
-    th, td {
-      border: 1px solid #ccc;
-      padding: 10px;
-      text-align: center;
-    }
-    ul {
-      width: 80%;
-      margin: 20px auto;
-    }
+    :root { --w: 1000px; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; padding: 24px; color: #111; }
+    h1 { text-align: center; margin-bottom: 8px; }
+    p.hint { text-align: center; color: #555; margin-top: 0; }
+    table { width: min(100%, var(--w)); margin: 20px auto; border-collapse: collapse; border: 1px solid #e5e7eb; }
+    th, td { border-bottom: 1px solid #e5e7eb; padding: 12px 10px; text-align: left; }
+    th { background: #f8fafc; font-weight: 600; }
+    tr:last-child td { border-bottom: 0; }
+    td.icon { width: 56px; text-align: center; font-size: 20px; }
+    a { color: #0b72ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    ul { width: min(100%, var(--w)); margin: 20px auto; line-height: 1.6; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 4px; }
+    .ok { color: #16a34a; font-weight: 600; }
+    .err { color: #dc2626; font-weight: 600; }
   </style>
 </head>
 <body>
-  <h1 style="text-align:center;">My File Table</h1>
+  <h1>Uploaded Files</h1>
+  <p class="hint">Each filename links to the actual file on this site. Sizes are filled in automatically.</p>
 
-  <table>
-    <tr>
-      <th>File Icon</th>
-      <th>File Name</th>
-      <th>File Type</th>
-      <th>File Size</th>
-    </tr>
-    <tr>
-      <td><i class="fa-solid fa-file-image"></i></td>
-      <td><a href="example.png">example.png</a></td>
-      <td>PNG</td>
-      <td>~1 KB</td>
-    </tr>
-    <tr>
-      <td><i class="fa-solid fa-file-code"></i></td>
-      <td><a href="example.html">example.html</a></td>
-      <td>HTML</td>
-      <td>~1 KB</td>
-    </tr>
-    <tr>
-      <td><i class="fa-solid fa-file-code"></i></td>
-      <td><a href="example.json">example.json</a></td>
-      <td>JSON</td>
-      <td>~1 KB</td>
-    </tr>
-    <tr>
-      <td><i class="fa-solid fa-file-lines"></i></td>
-      <td><a href="example.txt">example.txt</a></td>
-      <td>TXT</td>
-      <td>~1 KB</td>
-    </tr>
-    <tr>
-      <td><i class="fa-solid fa-file-pdf"></i></td>
-      <td><a href="example.pdf">example.pdf</a></td>
-      <td>PDF</td>
-      <td>~10 KB</td>
-    </tr>
+  <table id="filesTable" aria-describedby="table-help">
+    <thead>
+      <tr>
+        <th>File icon</th>
+        <th>File name (link)</th>
+        <th>File type</th>
+        <th>File size</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Update names here if yours differ -->
+      <tr data-file="example.png">
+        <td class="icon"><i class="fa-solid fa-file-image" aria-hidden="true"></i></td>
+        <td><a href="example.png">example.png</a></td>
+        <td>PNG</td>
+        <td class="size">…</td>
+      </tr>
+      <tr data-file="example.html">
+        <td class="icon"><i class="fa-solid fa-file-code" aria-hidden="true"></i></td>
+        <td><a href="example.html">example.html</a></td>
+        <td>HTML</td>
+        <td class="size">…</td>
+      </tr>
+      <tr data-file="example.json">
+        <td class="icon"><i class="fa-solid fa-file-code" aria-hidden="true"></i></td>
+        <td><a href="example.json">example.json</a></td>
+        <td>JSON</td>
+        <td class="size">…</td>
+      </tr>
+      <tr data-file="example.txt">
+        <td class="icon"><i class="fa-solid fa-file-lines" aria-hidden="true"></i></td>
+        <td><a href="example.txt">example.txt</a></td>
+        <td>TXT</td>
+        <td class="size">…</td>
+      </tr>
+      <tr data-file="example.pdf">
+        <td class="icon"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i></td>
+        <td><a href="example.pdf">example.pdf</a></td>
+        <td>PDF</td>
+        <td class="size">…</td>
+      </tr>
+    </tbody>
   </table>
 
-  <h2 style="text-align:center;">Browser Observations</h2>
   <ul>
-    <li>Browser can open `.txt` and `.html` directly inside the tab.</li>
-    <li>Clicking `.pdf` opens in a PDF viewer built into the browser.</li>
-    <li>Clicking `.png` displays the image by itself in the tab.</li>
+    <li>My browser opened <code>.html</code> and <code>.txt</code> directly in the tab with no download prompt.</li>
+    <li>The <code>.pdf</code> loaded inside the built-in PDF viewer (zoom, page navigation worked).</li>
+    <li>The <code>.png</code> displayed by itself in the tab; right-click offered “Open image in new tab” and “Save image as…”.</li>
   </ul>
+
+  <p id="table-help" hidden>Table of uploaded files with icons, links, types, and sizes.</p>
+
+  <script>
+    // Format bytes as human-readable (e.g., 10.2 KB)
+    function fmtBytes(bytes) {
+      if (!Number.isFinite(bytes) || bytes < 0) return '—';
+      const units = ['B','KB','MB','GB','TB'];
+      let i = 0, n = bytes;
+      while (n >= 1024 && i < units.length - 1) { n /= 1024; i++; }
+      return `${n.toFixed(n < 10 && i > 0 ? 1 : 0)} ${units[i]}`;
+    }
+
+    // Try HEAD, fall back to GET (stream) if HEAD blocked
+    async function getSize(url) {
+      try {
+        const res = await fetch(url, { method: 'HEAD' });
+        if (res.ok) {
+          const len = res.headers.get('content-length');
+          return len ? Number(len) : null;
+        }
+      } catch {}
+      try {
+        const res = await fetch(url);
+        if (!res.ok) return null;
+        const blob = await res.blob();
+        return blob.size ?? null;
+      } catch {
+        return null;
+      }
+    }
+
+    (async () => {
+      const rows = document.querySelectorAll('#filesTable tbody tr');
+      for (const row of rows) {
+        const fname = row.getAttribute('data-file');
+        const sizeCell = row.querySelector('.size');
+        try {
+          const size = await getSize(fname);
+          if (size != null) {
+            sizeCell.textContent = fmtBytes(size);
+            sizeCell.classList.add('ok');
+          } else {
+            sizeCell.textContent = 'Unavailable';
+            sizeCell.classList.add('err');
+          }
+        } catch (e) {
+          sizeCell.textContent = 'Error';
+          sizeCell.classList.add('err');
+        }
+      }
+    })();
+  </script>
 </body>
 </html>
