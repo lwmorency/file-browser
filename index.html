@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>File Table</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    table {
+      width: 80%;
+      border-collapse: collapse;
+      margin: 20px auto;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+    ul {
+      width: 80%;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align:center;">My File Table</h1>
+
+  <table>
+    <tr>
+      <th>File Icon</th>
+      <th>File Name</th>
+      <th>File Type</th>
+      <th>File Size</th>
+    </tr>
+    <tr>
+      <td><i class="fa-solid fa-file-image"></i></td>
+      <td><a href="example.png">example.png</a></td>
+      <td>PNG</td>
+      <td>~1 KB</td>
+    </tr>
+    <tr>
+      <td><i class="fa-solid fa-file-code"></i></td>
+      <td><a href="example.html">example.html</a></td>
+      <td>HTML</td>
+      <td>~1 KB</td>
+    </tr>
+    <tr>
+      <td><i class="fa-solid fa-file-code"></i></td>
+      <td><a href="example.json">example.json</a></td>
+      <td>JSON</td>
+      <td>~1 KB</td>
+    </tr>
+    <tr>
+      <td><i class="fa-solid fa-file-lines"></i></td>
+      <td><a href="example.txt">example.txt</a></td>
+      <td>TXT</td>
+      <td>~1 KB</td>
+    </tr>
+    <tr>
+      <td><i class="fa-solid fa-file-pdf"></i></td>
+      <td><a href="example.pdf">example.pdf</a></td>
+      <td>PDF</td>
+      <td>~10 KB</td>
+    </tr>
+  </table>
+
+  <h2 style="text-align:center;">Browser Observations</h2>
+  <ul>
+    <li>Browser can open `.txt` and `.html` directly inside the tab.</li>
+    <li>Clicking `.pdf` opens in a PDF viewer built into the browser.</li>
+    <li>Clicking `.png` displays the image by itself in the tab.</li>
+  </ul>
+</body>
+</html>
